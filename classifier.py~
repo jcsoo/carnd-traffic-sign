@@ -1,0 +1,42 @@
+import pickle
+import csv
+import sys
+
+def load_sign_names():
+    # Load Sign Names File
+
+    sign_names_file = './signnames.csv'
+    sign_names_list = []
+    sign_names = {}
+    with open(sign_names_file) as f:
+        r = csv.reader(f)
+        r.__next__()
+        for line in r:
+            sign_names_list.append((int(line[0]), line[1]))
+            sign_names[int(line[0])] = line[1]
+    return sign_names
+                                                            
+def load_data():
+    training_file = './train.p'
+    validation_file = './valid.p'
+    testing_file = './test.p'
+
+    with open(training_file, mode='rb') as f:
+        train = pickle.load(f)
+    with open(validation_file, mode='rb') as f:
+        valid = pickle.load(f)
+    with open(testing_file, mode='rb') as f:
+        test = pickle.load(f)
+
+    x_train, y_train = train['features'], train['labels']
+    x_valid, y_valid = valid['features'], valid['labels']
+    x_test, y_test = test['features'], test['labels']
+
+    return (x_train, y_train, x_valid, y_valid, x_test, y_test)
+
+def main(args):
+    sign_names = load_sign_names()
+    (x_train, y_train, x_valid, y_valid, x_test, y_test) = load_data()
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
