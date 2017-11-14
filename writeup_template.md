@@ -225,7 +225,9 @@ Here are the results of the prediction:
 The model was able to predict 8 out of 8, for an accuracy of 100%. This compares to the 96% accuracy
 on the test set.
 
+In retrospect, the examples that I picked may have been too easy - lighting was good in all cases, the signs were close to face on, and they were cropped almost identically to the training set. Also, many of the examples were from classes that didn't seem to have much ambiguity - there are no other classes that are similar to "No Entry", and the signs with large arrows are easy to distinguish from each other. 
 
+It would have been more instructive to pick from the set of signs set inside red triangles, and to test with images with poorer lighting conditions.
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
